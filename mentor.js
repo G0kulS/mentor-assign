@@ -93,5 +93,24 @@ app.get("/student",(req,res)=>{
 
 app.get("/mentor/:id",(req,res)=>{
     let index = mentor.findIndex((obj)=>obj.id==req.params.id);
-    res.send(mentor[index].students);  
+    console.log(index);
+    res.send(mentor[index]);  
+})
+app.get("/student/:id",(req,res)=>{
+    let index = students.findIndex((obj)=>obj.id==req.params.id);
+    console.log(index);
+    res.send(students[index]);  
+})
+app.delete("/student/:id",(req,res)=>{
+    let index = students.findIndex((obj)=>obj.id==req.params.id);
+    console.log(index);
+    res.send(students[index]);  
+    students.splice(index,1);
+})
+
+app.delete(("/mentor/:id"),(req,res)=>{
+    let index = mentor.findIndex((obj)=>obj.id==req.params.id);
+    console.log(index);
+    res.send(mentor[index].students);
+    mentor.splice(index,1);
 })
